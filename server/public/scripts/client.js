@@ -43,12 +43,12 @@ console.log('Form controller is running');
   }
 
   self.addSuperhero = function() {
-    for (var i = 0; i < superPowers.length; i++) {
-      if(superPowers[i].name == newSuperhero.name){
-        var power_id = superPowers[i].power_id;
+    for (var i = 0; i < self.superPowers.length; i++) {
+      if(self.superPowers[i].name == self.newSuperhero.name){
+        var power_id = self.superPowers[i].power_id;
       }
     }
-    newSuperhero.power_id = power_id;
+    self.newSuperhero.power_id = power_id;
     console.log('new Superhero: ', self.newSuperhero);
     $http.post('/heroes', self.newSuperhero)
       .then(function(response) {
