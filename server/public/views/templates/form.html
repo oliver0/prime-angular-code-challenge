@@ -1,16 +1,17 @@
-<form name="superheroForm" class="col-md-12" id="superheroForm" novalidate>
+<form name="superheroForm" class="col-md-12" id="superheroForm" ng-submit="superheroForm.$valid && fc.addSuperhero()" novalidate>
 
     <div class="form-group col-md-6">
       <label for="persona">Persona</label>
-      <input name="persona" type="text" class="form-control" required />
+      <input name="persona" type="text" class="form-control" ng-model="fc.newSuperhero.persona" required />
     </div>
 
     <div class="form-group col-md-6">
       <label for="alias">Alias</label>
-      <input name="alias" type="text"  class="form-control" required />
+      <input name="alias" type="text"  class="form-control" ng-model="fc.newSuperhero.alias" required />
     </div>
 
-    <select class= "form-group col-md-6" >
+    <select class= "form-group col-md-6" ng-model="fc.superPower" >
+        <option value="">Select Super Power</option>
         <option value="{{superhero.name}}" ng-repeat="superhero in fc.superHeroes">{{superhero.name}}</option>
     </select>
 

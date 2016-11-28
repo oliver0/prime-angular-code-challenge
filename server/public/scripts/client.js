@@ -21,6 +21,8 @@ app.controller('FormController', ["$http", function($http) {
 console.log('Form controller is running');
   var self = this;
   self.superHeroes = [];
+  self.newSuperhero = {};
+  self.superPower = "";
 
   getHeroes();
 
@@ -29,6 +31,15 @@ console.log('Form controller is running');
       .then(function(response) {
         console.log("Heroes! : ", response.data);
         self.superHeroes = response.data;
+      });
+  }
+
+  self.addSuperhero = function() {
+    console.log('new Superhero: ', self.newSuperhero);
+    $http.post('/heroes', self.newSuperhero)
+      .then(function(response) {
+        console.log('POST finished. Get heroes again.');
+        getHeroes();
       });
   }
 
