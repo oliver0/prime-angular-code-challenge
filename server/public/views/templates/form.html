@@ -1,4 +1,4 @@
-<form name="superheroForm" class="col-md-12" id="superheroForm" ng-submit="superheroForm.$valid && fc.addSuperhero()" novalidate>
+<form name="superheroForm" class="col-md-12" id="superheroForm" ng-submit="superheroForm.$valid && fc.addEmployee()" novalidate>
 
     <div class="form-group col-md-6">
       <label for="persona">Persona</label>
@@ -12,7 +12,7 @@
 
     <select class= "form-group col-md-6" ng-model="fc.superPower" >
         <option value="">Select Super Power</option>
-        <option value="{{superhero.name}}" ng-repeat="superhero in fc.superHeroes">{{superhero.name}}</option>
+        <option value="{{superhero.name}}" ng-model="fc.newSuperhero.name" ng-repeat="superhero in fc.superHeroes">{{superhero.name}}</option>
     </select>
 
 

@@ -22,7 +22,7 @@ console.log('Form controller is running');
   var self = this;
   self.superHeroes = [];
   self.newSuperhero = {};
-  self.superPower = "";
+  self.superPowers = [];
 
   getHeroes();
 
@@ -34,7 +34,21 @@ console.log('Form controller is running');
       });
   }
 
+  function getSuperPowers() {
+    $http.get('/superpowers')
+      .then(function(response) {
+        console.log("Powers! : ", response.data);
+        self.superPowers = response.data;
+      });
+  }
+
   self.addSuperhero = function() {
+    for (var i = 0; i < superPowers.length; i++) {
+      if(superPowers[i].name == newSuperhero.name){
+        var power_id = superPowers[i].power_id;
+      }
+    }
+    newSuperhero.power_id = power_id;
     console.log('new Superhero: ', self.newSuperhero);
     $http.post('/heroes', self.newSuperhero)
       .then(function(response) {
@@ -42,6 +56,8 @@ console.log('Form controller is running');
         getHeroes();
       });
   }
+
+
 
 }]);
 
@@ -60,4 +76,13 @@ console.log('Superhero controller is running');
         self.superHeroes = response.data;
       });
   }
+
+  self.deleteSuperhero = function(superhero){
+    console.log('clicked');
+    $http.delete('/heroes/'+ superhero.id)
+      .then(function(response){
+        console.log('DELETE finished. Get heroes again.');
+        getHeroes();
+      });
+    }
 }]);
