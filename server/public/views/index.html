@@ -10,7 +10,11 @@
     <script type="text/javascript" src="./scripts/client.js"></script>
   </head>
   <body ng-app="myApp">
-    <h1>Department of Emerging Superhero Knowledge</h1>
-    <div ng-include="'/views/templates/form.html'"></div>
+
+    <div class="text-center" ng-include="'/views/templates/header.html'"></div>
+
+    <div ng-include="'/views/templates/nav.html'"></div>
+    <main ng-view></main>
+    
   </body>
 </html>
