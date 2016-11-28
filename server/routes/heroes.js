@@ -12,6 +12,7 @@ router.use(bodyParser.json());
 
 // return all heroes
 router.get('/', function (req, res) {
+  console.log('reached GET!');
   pool.connect()
     .then(function (client) {
       client.query('SELECT heroes.*, super_powers.name, super_powers.description FROM heroes JOIN super_powers ON heroes.power_id = super_powers.id')
