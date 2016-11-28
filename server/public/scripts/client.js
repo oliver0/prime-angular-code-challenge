@@ -19,6 +19,18 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.controller('FormController', ["$http", function($http) {
 console.log('Form controller is running');
+  var self = this;
+  self.superHeroes = [];
+
+  getHeroes();
+
+  function getHeroes() {
+    $http.get('/heroes')
+      .then(function(response) {
+        console.log("Heroes! : ", response.data);
+        self.superHeroes = response.data;
+      });
+  }
 
 }]);
 
